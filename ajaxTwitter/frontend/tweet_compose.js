@@ -107,7 +107,7 @@ class TweetCompose {
 	clearInput(){
 		this.post.val("");
 		this.el.find('.clear-this').empty();
-		// this.el.find(".chars-left").empty();
+		this.el.find(".chars-left").empty();
 	}
 }
 
