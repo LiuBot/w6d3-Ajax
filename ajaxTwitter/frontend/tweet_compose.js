@@ -6,14 +6,27 @@ class TweetCompose {
 
 		this.post.on("input", this.handleInput.bind(this));
 
-
+		this.el.find('a.add-mentioned-user').click(this.addMentionedUser.bind(this));
+		
 		this.el.on("submit", this.submit.bind(this));
 	}
 
-// Finally, let's add a counter that will show the number of characters remaining 
-// for a tweet (starting at 140). Add a strong tag with class .chars-left to the 
-// form. In the TweetCompose constructor, add an input event handler on the 
-// textarea. In it, update the strong tag with the number of characters remaining.
+		// In the TweetCompose constructor, add a listener for a click on a.add-mentioned-user. I
+		 // wrote a TweetCompose#addMentionedUser method. 
+		 // I used jQuery to find the script tag, 
+		 // I grabbed the HTML from within using $scriptTag.html(), 
+		 // then appended it into the mentioned-users div.
+
+	addMentionedUser(event){
+		event.preventDefault();
+
+		const $scriptTag = this.el.find('script').html();
+		this.el.find("div.mentioned-users").append($scriptTag);
+	}
+
+	removeMentionedUser(){
+
+	}
 
 
 	handleInput(event){
@@ -22,7 +35,7 @@ class TweetCompose {
 			this.el.find(".chars-left").html(`Post too long by ${tweetLength-140} characters!`)
 		} else{
 		this.el.find(".chars-left").html(`Characters remaining: ${140-tweetLength}`);
-			
+		
 		}
 	}
 
@@ -76,27 +89,6 @@ class TweetCompose {
 		this.post.val("");
 		this.el.find(".chars-left").empty();
 	}
-
-// Write a TweetCompose#handleSuccess method. This should call clearInput and re-enable the form.
-
-// In #handleSuccess, we also want to insert the created tweet into the list of 
-// all tweets. How does TweetCompose find the ul of tweets? We can set a data 
-// attribute on the form where the value is the selector that corresponds to the 
-// target ul. For example, if we give the target ul an id of #feed, we can give 
-// our form the following data attribute: data-tweets-ul="#feed". Our TweetCompose 
-// can pull out this data attribute and use the selector #feed to find the ul. 
-// This is better than hard coding #feed into the JS.
-
 }
-
-
-
-
-
-// A successful AJAX post request for a tweet should return back the newly created 
-// tweet in JSON format. For simplicity, have TweetCompose call JSON.stringify on 
-// the created Tweet. Build an li with the JSON content, and stick it in the ul. 
-// We'll actually render this nicely in a later phase.
-
 
 module.exports = TweetCompose;
