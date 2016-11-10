@@ -1,14 +1,14 @@
 class FollowToggle {
-	constructor(el){
-		this.el = $(el);
-		this.userId= this.el.data('user-id');
-		this.followState = this.el.data('initial-follow-state') 
-		this.render();
+  constructor(el){
+    this.el = $(el);
+    this.userId= this.el.data('user-id');
+    this.followState = this.el.data('initial-follow-state') 
+    this.render();
 
-		this.el.click(this.handleClick.bind(this));
-	}
+    this.el.click(this.handleClick.bind(this));
+  }
 
-	  handleClick(event) {
+    handleClick(event) {
     event.preventDefault();
 
     if (this.followState === "followed") {
@@ -24,17 +24,17 @@ class FollowToggle {
   }
 
   makeRequest(type, followState){
-  	const that = this;
-  	$.ajax({
-	    url: `/users/${this.userId}/follow`,
-	    dataType: "json",
-	    method: type,
-	    success() {
-	      that.followState = followState;
-	      that.render();
-	    }
-	  });
-	}
+    const that = this;
+    $.ajax({
+      url: `/users/${this.userId}/follow`,
+      dataType: "json",
+      method: type,
+      success() {
+        that.followState = followState;
+        that.render();
+      }
+    });
+  }
 
   render() {
     switch(this.followState){
