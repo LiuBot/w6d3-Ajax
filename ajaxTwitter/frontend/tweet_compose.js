@@ -20,9 +20,10 @@ class TweetCompose {
 	addMentionedUser(event){
 		event.preventDefault();
 
-		const $scriptTag = this.el.find('script').html();
-		this.el.find("div.mentioned-users").append($scriptTag);
+		let $scriptTag = this.el.find('script').html();
+		this.el.find(".mentioned-users").append($scriptTag);
 	}
+
 
 // In the TweetCompose constructor, I listened for click events on a.remove-mentioned-user. 
 // You have to use event delegation here: why? I wrote a TweetCompose#removeMentionedUser 
@@ -88,14 +89,25 @@ class TweetCompose {
 		li.append(tweet.content);
 		li.append(` -- <a href="/users/${tweet.user.id}">${tweet.user.username}</a>`);
 	  li.append(` -- ${tweet.created_at}`);
-		
-		tweetsUl.prepend(li);
 
+	  if (tweet.mentions.length > 0) {
+      let mentionUl = $('<ul>');
+
+     $(tweet.mentions).each((i,mention)=>{
+     	let mentionLi = $('<li>');
+     	mentionLi.append(`<a href="/users/${mention.user.id}">${mention.user.username}</a>`);
+     	mentionUl.append(mentionLi);
+     });
+     li.append(mentionUl); // li here is the li for the tweet
+    }
+
+		tweetsUl.prepend(li);
 	}
+
 	clearInput(){
 		this.post.val("");
-		this.el.find('.mentioned-users').empty();
-		this.el.find(".chars-left").empty();
+		this.el.find('.clear-this').empty();
+		// this.el.find(".chars-left").empty();
 	}
 }
 

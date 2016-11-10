@@ -1,27 +1,29 @@
+
 <h2>New Tweet!</h2>
 
 <form class="tweet-compose" data-tweets-ul="#feed">
 
     <textarea name="tweet[content]"></textarea><br>
-    <strong class="chars-left"></strong><br>
+    <strong class="chars-left"></strong>
 
+<div class="mentioned-users">
  <script type="text/template" class="mention-script">
-    <div>
-    
+    <div class="clear-this">
     <select name="tweet[mentioned_user_ids][]">
       <option></option>
       <% User.all.each do |user| %>
         <option value="<%= user.id %>"><%= user.username %></option>
       <% end %>
     </select>
+   
     <a class="remove-mentioned-user" href="javascript:void(0)">Remove</a>
+     </div>
     </div>
 
   </script>
-
 <!-- Write an "Add mention" anchor tag. Give it a phony href (href="javascript:void(0)" is typical). Also give it a class add-mentioned-user -->
   <a class="add-mentioned-user" href="javascript:void(0)">Add Mention</a>
-  <div class="mentioned-users"></div>
+</div>
 
   <input type="Submit" value="Post Tweet!">
 </form>
