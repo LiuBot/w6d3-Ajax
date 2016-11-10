@@ -8,8 +8,7 @@ button know the user-id and initial-follow-state ("followed" or
 Leave the inner HTML of the button empty: the FollowToggle class will be responsible 
 for setting this. -->
 
-<button class="follow-toggle">
+<button class="follow-toggle"
 	data-user-id="<%= user.id %>"
-	data-initial-follow-state="<%= current_user.follows?(user) ? "followed" : "unfollowed") %>"
-</button>
+	data-initial-follow-state="<%= current_user.follows?(user) ? "followed" : "unfollowed" %>"></button>
 
