@@ -212,11 +212,11 @@
 		constructor(el){
 			this.el = $(el);
 			this.post = this.el.find('[name="tweet[content]"]');
-	
 			this.post.on("input", this.handleInput.bind(this));
 	
-			this.el.find('a.add-mentioned-user').click(this.addMentionedUser.bind(this));
-			
+			this.el.find('.add-mentioned-user').click(this.addMentionedUser.bind(this));
+			this.el.on('click','.remove-mentioned-user',this.removeMentionedUser);
+	
 			this.el.on("submit", this.submit.bind(this));
 		}
 	
@@ -233,8 +233,15 @@
 			this.el.find("div.mentioned-users").append($scriptTag);
 		}
 	
-		removeMentionedUser(){
+	// In the TweetCompose constructor, I listened for click events on a.remove-mentioned-user. 
+	// You have to use event delegation here: why? I wrote a TweetCompose#removeMentionedUser 
+	// which used the event.currentTarget to learn which remove anchor tag was clicked, 
+	// and removed the parent div element. This removes both the anchor tag and the select, too.
 	
+		removeMentionedUser(event){
+			event.preventDefault();
+			// used the event.currentTarget to learn which remove anchor tag was clicked, 
+			$(event.currentTarget).parent().remove(); //This removes both the anchor tag and the select, too.
 		}
 	
 	
@@ -296,6 +303,7 @@
 		}
 		clearInput(){
 			this.post.val("");
+			this.el.find('.mentioned-users').empty();
 			this.el.find(".chars-left").empty();
 		}
 	}
