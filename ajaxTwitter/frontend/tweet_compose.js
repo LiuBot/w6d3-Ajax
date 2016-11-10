@@ -31,8 +31,8 @@ class TweetCompose {
 // TweetCompose#submit method that uses serializeJSON to build JSON from the form 
 // contents and use $.ajax to submit the form.
 
-// As before, disable the form when the submit is made. You can't disable an 
-// entire form, so you'll have to disable all the inputs. To get all the inputs, 
+// As before, disable the form when the submit is made. 
+//You can't disable an entire form, so you'll have to disable all the inputs. To get all the inputs, 
 // use jQuery's :input pseudo-CSS selector. Make sure not to disable your inputs 
 // until after you've serialized the form contents, or their values will be 
 // ignored. :(
@@ -41,7 +41,8 @@ class TweetCompose {
 		event.preventDefault();
 
 		const data = this.el.serializeJSON(); // serialize the form contents first
-		this.el.find(":input").prop("disabled", true); 
+		this.el.find(":input").prop("disabled", true); // then disable inputs while ajax request is
+		// being made 
 
 		$.ajax({
 			url: '/tweets',
@@ -52,15 +53,31 @@ class TweetCompose {
 		})
 	}
 
+	handleSuccess(tweet){
+		this.el.find(":input").prop("disabled", false);
+		this.addTweet(tweet);
+		this.clearInput();
+	}
 // Write a TweetCompose#clearInput method to empty out all the inputs after a 
 // tweet is successfully created. 
 
-	clearInput(){
+	addTweet(tweet){
+		const tweetsUl = $(this.el.data('tweets-ul'));
+		let li = $('<li>');
+
+		li.append(tweet.content);
+		li.append(` -- <a href="/users/${tweet.user.id}">${tweet.user.username}</a>`);
+	  li.append(` -- ${tweet.created_at}`);
+		
+		tweetsUl.prepend(li);
 
 	}
+	clearInput(){
+		this.post.val("");
+		this.el.find(".chars-left").empty();
+	}
 
-	// Write a TweetCompose#handleSuccess method. This 
-// should call clearInput and re-enable the form.
+// Write a TweetCompose#handleSuccess method. This should call clearInput and re-enable the form.
 
 // In #handleSuccess, we also want to insert the created tweet into the list of 
 // all tweets. How does TweetCompose find the ul of tweets? We can set a data 
@@ -69,10 +86,6 @@ class TweetCompose {
 // our form the following data attribute: data-tweets-ul="#feed". Our TweetCompose 
 // can pull out this data attribute and use the selector #feed to find the ul. 
 // This is better than hard coding #feed into the JS.
-	handleSuccess(){
-
-		this.clearInput();
-	}
 
 }
 
