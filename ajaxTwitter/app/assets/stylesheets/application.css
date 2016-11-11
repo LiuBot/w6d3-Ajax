@@ -28,13 +28,14 @@ section, p, footer, small {
   margin: 0;
   padding: 0;
   border: 0;
+  outline:0;
   outline: 0;
   font: inherit;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-  box-sizing: inherit;
+  box-sizing: border-box;
   background: transparent;
 }
 
@@ -49,28 +50,47 @@ h1{
 
 	body{
 	  font-weight:400;
-	  background: #e6f9ff;
+	  background:#99d6ff;
+	  width:60%;
+	  margin:0 auto;
 	}
 
-button, input[type="submit"] {
-	padding:10px 20px;
-	font-size:16px;
-	color: #ffffff;
-	border-radius: 5px;
-	background:#33ccff;
-}
+	a{
+		color:#0099ff;
+		font-size:20px;
+	}
+
+	a:hover{
+		color: white;
+	}
+
+	button, input[type="submit"]{
+		color:#0099ff;
+		outline:none;
+		border-radius: 5px;
+		border: 1px solid #0099ff;
+		margin:5px;
+		padding:5px 15px;
+		background:white;
+		font-size:16px;
+	}
+
+	input[type="submit"]:hover{
+		background:#0099ff;
+		color:white;
+	}
+
+	input[type="select"]{
+
+		
+	}
+
 
 ul {
   list-style: none;
+  padding:5px 5px;
 }
 
-ul li:nth-child(n){
-	background: #b3e0ff;
-}
-
-ul li:nth-child(2n){
-	background: #e6f5ff;
-}
 
 /* Clearfix */
 
@@ -78,25 +98,4 @@ ul li:nth-child(2n){
   content: "";
   display: block;
   clear: both;
-}
-
-.login-form{
-	margin-right: 20%;
-	border: 3px solid black;
-	float:right;
-	width:500px;
-	height:100%;
-	background: white;
-}
-
-div.form-contents{
-	margin:30px;
-}
-
-.input{
-	margin:10px 5px;
-}
-
-.input-field{
-	height:20px;
 }

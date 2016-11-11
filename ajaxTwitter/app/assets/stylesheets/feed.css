@@ -1,0 +1,30 @@
+
+.feed{
+	position:relative;
+	display:block;
+	padding:20px;
+	background:#e6f9ff;
+	border-radius: 10px
+}
+
+#feed > li{
+	padding:20px;
+	font-size:20px;
+	border-top: 1px solid #2298f0;
+}
+
+.fetch-more{
+	text-align:center;
+	margin: 0 auto;
+	display:block;
+	color:white;
+	background:#2298f0;
+	padding:10px 20px;
+	font-size:20px;
+	border: 1px solid #2298f0;
+	border-radius:2px;
+}
+
+.fetch-more:hover{
+	-webkit-filter: brightness(110%);
+}

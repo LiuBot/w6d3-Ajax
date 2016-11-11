@@ -1,13 +1,15 @@
-<h1><%= @user.username %></h1>
+<div class="welcome user-intro"><h1><%= @user.username %></h1></div>
 
 <%= render "follows/form", user: @user %>
 
+<div class="feed">
 <b>Tweets</b>
-<ul>
+<ul class="feed">
   <% @user.tweets.each do |tweet| %>
     <li><%= render "tweets/tweet", tweet: tweet %></li>
   <% end %>
 </ul>
+<div>
 
 <b>Followers</b>
 <ul>

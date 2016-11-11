@@ -1,0 +1,25 @@
+.new-tweet{
+	display:block;
+	position:fixed;
+	top:0px;
+	right:0px;
+	background:white;
+	width:400px;
+	padding:10px;
+	opacity:0.8;
+}
+
+.new-tweet:hover{
+	opacity:1.0;
+}
+
+
+.post-field{
+	height:50px;
+}
+
+
+select{
+	font-size:16px;
+	color: #2298f0;
+}

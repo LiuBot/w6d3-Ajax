@@ -60,7 +60,7 @@ class InfiniteTweets {
 
      $(tweet.mentions).each((i,mention)=>{
      	let mentionLi = $('<li>');
-     	mentionLi.append(`<a href="/users/${mention.user.id}">${mention.user.username}</a>`);
+     	mentionLi.append(`<a href="/users/${mention.user.id}">@${mention.user.username}</a>`);
      	mentionUl.append(mentionLi);
      });
      li.append(mentionUl); // li here is the li for the tweet
