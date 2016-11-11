@@ -291,7 +291,8 @@
 	
 		handleSuccess(tweet){
 			this.el.find(":input").prop("disabled", false);
-			 $('#feed').trigger('insert-tweet', tweet);
+			 $('#feed').trigger('insert-tweet', [tweet, false]);
+			 // this.addTweet(tweet);
 			this.clearInput();
 		}
 	// Write a TweetCompose#clearInput method to empty out all the inputs after a 
