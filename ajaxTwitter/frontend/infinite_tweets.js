@@ -1,9 +1,3 @@
-// Begin writing an InfiniteTweets class. Listen for clicks to fetch more; begin 
-// writing an InfiniteTweets#fetchTweets method.
-
-// In #fetchTweets, make an AJAX request to /feed. In the success handler, call an 
-// #insertTweets method. For simplicity, for each tweet, just append <li> items 
-// with JSON.stringify(tweet) into the appropriate ul.
 
 
 class InfiniteTweets {
@@ -11,6 +5,9 @@ class InfiniteTweets {
 		this.el = $(el);
 		this.el.on('click', ".fetch-more", this.fetchTweets.bind(this));
 		this.maxCreatedAt = null;
+		this.el.on('insert-tweet', (event, tweet, append) => {
+      this.addTweet(tweet, append); // custom event
+     })
 	}
 
 	fetchTweets(event){
@@ -29,12 +26,12 @@ class InfiniteTweets {
 			dataType: 'json',
 			method: 'GET', // grabbin tweets
 			success: (tweets)=>{ // here are tweets it grabbed 
-				if (tweets.length > 0) {
-					that.maxCreatedAt = tweets[tweets.length - 1].created_at // creation time of last tweet
-					that.insertTweets(tweets);
-				} else {
+				if (tweets.length < 20) {
 					$('.fetch-more').remove();
 					that.el.append('<h3>No more tweets!</h3>');
+				} else { // if there's less than 20 in the new batch of tweets 
+					that.maxCreatedAt = tweets[tweets.length - 1].created_at // creation time of last tweet
+					that.insertTweets(tweets);
 				}
 			}
 		})
@@ -44,12 +41,12 @@ class InfiniteTweets {
 
 	insertTweets(tweets){ // this grabs the collection of tweets 
 		$(tweets).each((i,tweet)=>{
-			this.addTweet(tweet);
+			 $('#feed').trigger('insert-tweet', tweet);
 		})
 	}
 
 
-	addTweet(tweet){ // reused from tweet_compose.js
+	addTweet(tweet, append=true){ // reused from tweet_compose.js
 		// adds individual tweets 
 		let tweetsUl = $(this.el.find('#feed'))
 		let li = $('<li>');
@@ -69,7 +66,7 @@ class InfiniteTweets {
      li.append(mentionUl); // li here is the li for the tweet
     }
 
-		tweetsUl.prepend(li);
+		tweetsUl.append(li);
 	}
 }
 
