@@ -66,7 +66,11 @@ class InfiniteTweets {
      li.append(mentionUl); // li here is the li for the tweet
     }
 
+    if (append){
 		tweetsUl.append(li);
+    } else{
+    	tweetsUl.prepend(li);
+    }
 	}
 }
 

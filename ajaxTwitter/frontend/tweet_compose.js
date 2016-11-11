@@ -9,6 +9,7 @@ class TweetCompose {
 		this.el.on('click','.remove-mentioned-user',this.removeMentionedUser);
 
 		this.el.on("submit", this.submit.bind(this));
+
 	}
 
 		// In the TweetCompose constructor, add a listener for a click on a.add-mentioned-user. I
