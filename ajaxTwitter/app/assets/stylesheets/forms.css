@@ -17,7 +17,7 @@ input[type="submit"].login:hover{
 .login-form, .signup-form{
 	display:block;
 	margin-right: 20%;
-	margin-top:20%;
+	margin-top:10%;
 	float:right;
 	width:500px;
 	height:100%;
