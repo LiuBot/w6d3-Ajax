@@ -81,30 +81,31 @@ class TweetCompose {
 		 // this.addTweet(tweet);
 		this.clearInput();
 	}
+	
 // Write a TweetCompose#clearInput method to empty out all the inputs after a 
 // tweet is successfully created. 
 
-	addTweet(tweet){
-		const tweetsUl = $(this.el.data('tweets-ul'));
-		let li = $('<li>');
+	// addTweet(tweet){
+	// 	const tweetsUl = $(this.el.data('tweets-ul'));
+	// 	let li = $('<li>');
 
-		li.append(tweet.content);
-		li.append(` -- <a href="/users/${tweet.user.id}">${tweet.user.username}</a>`);
-	  li.append(` -- ${tweet.created_at}`);
+	// 	li.append(tweet.content);
+	// 	li.append(` -- <a href="/users/${tweet.user.id}">${tweet.user.username}</a>`);
+	//   li.append(` -- ${tweet.created_at}`);
 
-	  if (tweet.mentions.length > 0) {
-      let mentionUl = $('<ul>');
+	//   if (tweet.mentions.length > 0) {
+ //      let mentionUl = $('<ul>');
 
-     $(tweet.mentions).each((i,mention)=>{
-     	let mentionLi = $('<li>');
-     	mentionLi.append(`<a href="/users/${mention.user.id}">${mention.user.username}</a>`);
-     	mentionUl.append(mentionLi);
-     });
-     li.append(mentionUl); // li here is the li for the tweet
-    }
+ //     $(tweet.mentions).each((i,mention)=>{
+ //     	let mentionLi = $('<li>');
+ //     	mentionLi.append(`<a href="/users/${mention.user.id}">${mention.user.username}</a>`);
+ //     	mentionUl.append(mentionLi);
+ //     });
+ //     li.append(mentionUl); // li here is the li for the tweet
+ //    }
 
-		tweetsUl.prepend(li);
-	}
+	// 	tweetsUl.prepend(li);
+	// }
 
 	clearInput(){
 		this.post.val("");
