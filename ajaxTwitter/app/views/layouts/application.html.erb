@@ -2,23 +2,27 @@
 <html>
 <head>
   <title>AjaxTwitter</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
   <style>
   body{
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   }
   </style>
-</head>
-<body>
-<div class="left-panel">
-<ul>
+
+  <link rel="icon" href="https://static1.squarespace.com/static/522f256de4b088d34db9a62f/5251f557e4b0b9b7feb030a6/525213a1e4b0ec712549e701/1381148510163/twitter+favicon+1200x974.png">
+</head> 
+
+<body class="cf">
+<section class="col col-1-4">
+<ul class="nav-bar">
+  <li><img class="icon" src="https://static1.squarespace.com/static/522f256de4b088d34db9a62f/5251f557e4b0b9b7feb030a6/525213a1e4b0ec712549e701/1381148510163/twitter+favicon+1200x974.png"
+  height="30px" width="auto"></li>
   <li><%= link_to "Feed", feed_url %></li>
   <li><%= link_to "User Search", search_users_url %></li>
-</ul></div>
-
 <% if current_user %>
   <form action="/session" method="POST">
     <input type="hidden" name="_method" value="DELETE">
@@ -27,9 +31,11 @@
       name="authenticity_token"
       value="<%= form_authenticity_token %>">
 
-    <input type="submit" value="Logout!">
+    <li class="logout-button"><input type="submit" value="Logout!"></li>
   </form>
 <% end %>
+</ul></section>
+
 
 <%= yield %>
 

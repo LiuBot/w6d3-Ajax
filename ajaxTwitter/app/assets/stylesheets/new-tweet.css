@@ -7,6 +7,7 @@
 	width:400px;
 	padding:10px;
 	opacity:0.8;
+	border-radius:3px;
 }
 
 .new-tweet:hover{
@@ -22,4 +23,27 @@
 select{
 	font-size:16px;
 	color: #2298f0;
+}
+
+.minimize-button{
+	position:absolute;
+	top:-10px;
+	color: #3973ac;
+	right:30px;
+	font-size: 52px;
+	cursor:pointer;
+}
+
+.minimize-button:hover{
+	color: #2298f0;
+}
+
+
+.modal{
+	display:none;
+}
+
+.modal.is-open{
+	display:block;
+	height:300px;
 }

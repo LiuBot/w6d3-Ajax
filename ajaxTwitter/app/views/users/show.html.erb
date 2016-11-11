@@ -1,16 +1,5 @@
-<div class="welcome user-intro"><h1><%= @user.username %></h1></div>
-
-<%= render "follows/form", user: @user %>
-
-<div class="feed">
-<b>Tweets</b>
-<ul class="feed">
-  <% @user.tweets.each do |tweet| %>
-    <li><%= render "tweets/tweet", tweet: tweet %></li>
-  <% end %>
-</ul>
-<div>
-
+<div class="follower-info info-aside">
+<div class="followers-text">
 <b>Followers</b>
 <ul>
   <% @user.followers.each do |follower| %>
@@ -23,4 +12,21 @@
   <% @user.followees.each do |followee| %>
     <li><%= followee.username %></li>
   <% end %>
-</ul>
+</ul></div></div>
+
+
+
+<section class="col col-3-4">
+<h1 class="welcome"><%= @user.username %>'s tweets</h1>
+
+<%= render "follows/form", user: @user %>
+
+<div class="feed">
+<b class="feed-label">Tweets</b>
+<ul class="feed" id="friend-feed">
+  <% @user.tweets.each do |tweet| %>
+    <li><img class="mini-icon" src="https://static1.squarespace.com/static/522f256de4b088d34db9a62f/5251f557e4b0b9b7feb030a6/525213a1e4b0ec712549e701/1381148510163/twitter+favicon+1200x974.png"
+  height="30px" width="auto"><%= render "tweets/tweet", tweet: tweet %></li>
+  <% end %>
+</ul></div></section>
+

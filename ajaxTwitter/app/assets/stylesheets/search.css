@@ -4,7 +4,24 @@
 	color: white;
 }
 
+.info-aside{
+	position:absolute;
+	display:block;
+	top:0px;
+	right:180px;
+	color:#0099ff;
+	font-size:20px;
+	background:white;
+	border-radius:5px;
+	margin:5px;
+	height:300px;
+	z-index:2;
+	border: 2px solid #0099ff;
+}
 
+.followers-text{
+	margin:10px;
+}
 .result{
 	height:100%;
 	width:300px;
@@ -16,26 +33,15 @@
 	margin:0px 0px;
 }
 
-.result > li{
-	color:white;
+.result li{
+	height:35px;
+	padding:5px;
+}
+.result a{
+	font-size:20px;
+	padding:15px;
 }
 .result > li:hover{
 	background: #3973ac;
 	width:100%;
-}
-
-
-.user-intro{
-	display:block;
-	display:flex;
-	position:relative;
-	height:100px;
-	margin:0px;
-	padding:5px;
-}
-
-.user-intro > li {
-	 flex-direction: column;
-   align-items: center;
-   justify-content: center;
 }

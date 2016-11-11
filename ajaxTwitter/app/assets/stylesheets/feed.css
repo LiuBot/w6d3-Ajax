@@ -1,4 +1,11 @@
 
+.feed-label{
+	margin: 0 auto;
+	position:relative;
+	left:40%;
+	font-size:30px;
+	color: #2298f0;
+}
 .feed{
 	position:relative;
 	display:block;
@@ -7,10 +14,14 @@
 	border-radius: 10px
 }
 
-#feed > li{
+#friend-feed > li, #feed > li{
 	padding:20px;
 	font-size:20px;
 	border-top: 1px solid #2298f0;
+}
+
+#friend-feed > li:hover, #feed > li:hover{
+	background:white;
 }
 
 .fetch-more{

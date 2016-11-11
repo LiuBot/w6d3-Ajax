@@ -51,6 +51,8 @@ class InfiniteTweets {
 		let tweetsUl = $(this.el.find('#feed'))
 		let li = $('<li>');
 
+		li.append(`<img class="mini-icon" src="https://static1.squarespace.com/static/522f256de4b088d34db9a62f/5251f557e4b0b9b7feb030a6/525213a1e4b0ec712549e701/1381148510163/twitter+favicon+1200x974.png"
+  height="30px" width="auto">`)
 		li.append(tweet.content);
 		li.append(` -- <a href="/users/${tweet.user.id}">${tweet.user.username}</a>`);
 	  li.append(` -- ${tweet.created_at}`);
